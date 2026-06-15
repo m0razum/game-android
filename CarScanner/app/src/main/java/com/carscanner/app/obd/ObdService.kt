@@ -118,9 +118,10 @@ class ObdService {
 
         var i = 0
         while (i < parts.size - 1) {
-            val first = parts[i].toIntOrNull(16) ?: run { i++; continue }
-            val second = parts[i + 1].toIntOrNull(16) ?: run { i++; continue }
+            val first = parts[i].toIntOrNull(16)
+            val second = parts[i + 1].toIntOrNull(16)
 
+            if (first == null || second == null) { i++; continue }
             if (first == 0 && second == 0) { i += 2; continue }
             if (first == 0x7F || first == 0xFE) { i++; continue }
             if (first in 0x41..0x4A) { i += 2; continue }

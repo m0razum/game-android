@@ -139,6 +139,7 @@ private fun ConnectedActions(
 }
 
 @Composable
+@OptIn(ExperimentalMaterial3Api::class)
 private fun ConnectionControls(
     state: CarState,
     onScan: () -> Unit,
@@ -168,12 +169,12 @@ private fun ConnectionControls(
     Spacer(modifier = Modifier.height(16.dp))
 
     if (state.availableDevices.isNotEmpty()) {
-        Text(
-            "Available Devices",
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.align(Alignment.Start)
-        )
+            Text(
+                "Available Devices",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.fillMaxWidth()
+            )
         Spacer(modifier = Modifier.height(8.dp))
 
         LazyColumn(
